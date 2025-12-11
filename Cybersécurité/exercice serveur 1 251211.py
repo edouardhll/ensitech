@@ -52,6 +52,7 @@ try:
     print(f"addresse : {addr}")
     #client.connect(("127.0.0.1", 4242))
     data = client.recv(1024)
+    data = data.decode("utf-8")
     print(f"data : {data}")
     message = ("bonjour \n")
     client.send(message.encode('utf-8'))
