@@ -60,13 +60,12 @@ while True:
         tcp = input(int("Donnez un PORT"))
         PORT = tcp
     elif cmd == "\\connect":
+        message = "Hello"
         client.connect((HOST, PORT))
         connected = True
-        client.send(b"Hello")
+        client.send(message.encode('utf-8'))
         data = client.recv(1024)
         print("Serveur : ", data.decode("utf-8"))
-
-
 
     else:
         message = input()
