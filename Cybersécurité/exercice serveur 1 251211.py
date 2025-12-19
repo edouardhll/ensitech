@@ -44,27 +44,27 @@ print("serveur en attente")
 
 #client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+while True:
 
-
-try:
-    client, addr = server.accept()
-    print(f"client : {client}")
-    print(f"addresse : {addr}")
+    try:
+        client, addr = server.accept()
+        print(f"client : {client}")
+        print(f"addresse : {addr}")
     #client.connect(("127.0.0.1", 4242))
-    data = client.recv(1024)
-    data = data.decode("utf-8")
-    print(f"data : {data}")
-    message = ("bonjour \n")
-    client.send(message.encode('utf-8'))
-    print("connection")
-except socket.timeout:
-    print("erreur")
-except socket.error as e:
-    print("erreur")
+        data = client.recv(1024)
+        data = data.decode("utf-8")
+        print(f"data : {data}")
+        message = ("bonjour \n")
+        client.send(message.encode('utf-8'))
+        print("connection")
+    except socket.timeout:
+        print("erreur")
+    except socket.error as e:
+        print("erreur")
 
-reponse_bytes = client.recv(1024)
-message_texte = reponse_bytes.decode("utf-8")
-print(message_texte)
+    reponse_bytes = client.recv(1024)
+    message_texte = reponse_bytes.decode("utf-8")
+    print(message_texte)
 
 client.close()
 server.close()
